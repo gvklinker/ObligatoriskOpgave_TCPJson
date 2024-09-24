@@ -9,9 +9,8 @@ namespace ObligatoriskOpgave_TCPJson
     public class JSONObject
     {
         public string Method {  get; set; }
-        public int[] nums;
-        public JSONObject() { 
-            nums = new int[2];
-        }
+        public int num1 {  get; set; }
+        public int num2 { get; set; }
+
     }
 }

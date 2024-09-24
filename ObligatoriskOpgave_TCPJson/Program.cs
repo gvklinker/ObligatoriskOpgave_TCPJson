@@ -24,15 +24,15 @@ void HandleClient(TcpClient socket)
     while (socket.Connected)
     {
         sw.WriteLine("Pick method: Add, Subtract or Random");
-        sw.WriteLine("ex: {Method: 'Add', nums: [11,6]}");
+        sw.WriteLine("ex: {\"Method\": \"Add\", \"num1\": 11, \"num2\": 6}");
         sw.Flush();
         string message = sr.ReadLine();
         JSONObject jOb = JsonSerializer.Deserialize<JSONObject>(message);
         switch (jOb.Method.ToLower())
         {
-            case "random": sw.WriteLine(RandomNumberGenerator.GetInt32(jOb.nums[0], jOb.nums[1])); break;
-            case "add": sw.WriteLine(jOb.nums[0] + jOb.nums[1]); break;
-            case "subtract": sw.WriteLine(jOb.nums[0] - jOb.nums[1]); break;
+            case "random": sw.WriteLine(RandomNumberGenerator.GetInt32(jOb.num1, jOb.num2)); break;
+            case "add": sw.WriteLine(jOb.num1 + jOb.num2); break;
+            case "subtract": sw.WriteLine(jOb.num1 - jOb.num2); break;
             default: sw.WriteLine("protocol error"); break;
         }
         sw.Flush();
